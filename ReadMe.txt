@@ -1,6 +1,6 @@
 NOTES
 -----
-Pluralsight course - getting started with reactive programming using rxjs.
+ps course - getting started with reactive programming using rxjs.
 
 Note. just do an npm install to restore packages if checking out from this from git then npm start.
 
@@ -15,4 +15,4 @@ npm install webpack webpack-dev-server typescript typings ts-loader --save-dev
 node_modules\.bin\typings install dt~es6-shim --global --save
 
 npm start
-server runs on localhost:8080
+server initially runs on localhost:8080 - port number will change if multiple versions running.
