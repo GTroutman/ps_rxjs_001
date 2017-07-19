@@ -27,7 +27,10 @@ function load(url: string) {
 }
 
 function loadWithFetch(url: string){
-
+    // Observable.defer() - make observable lazy
+    return Observable.defer(() => {
+        return Observable.fromPromise(fetch(url).then(r => r.json()));
+    });
 }
 
 function retryStrategy({ attempts = 4, delay = 1000 }) {
@@ -50,7 +53,10 @@ function renderMovies(movies) {
     });
 }
 
-click.flatMap(e => load("movies.json"))
+loadWithFetch("movies.json");   // Calls function but nothing happens until the observable is subscribed to (due to
+                                    // Observable.defer().
+
+click.flatMap(e => loadWithFetch("movies.json"))
     .subscribe(
         renderMovies,
     e => console.log(`error: ${e}`),
