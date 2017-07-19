@@ -1,5 +1,4 @@
 import { Observable } from "rxjs";
-import {render} from "typings/dist/support/cli";
 
 let output = document.getElementById("output");
 let button = document.getElementById("button")
@@ -27,6 +26,10 @@ function load(url: string) {
     }).retryWhen(retryStrategy({ attempts: 3, delay: 1500 }));
 }
 
+function loadWithFetch(url: string){
+
+}
+
 function retryStrategy({ attempts = 4, delay = 1000 }) {
     return function(errors) {
         return errors
@@ -47,7 +50,7 @@ function renderMovies(movies) {
     });
 }
 
-click.flatMap(e => load("moviess.json"))    // moviess.json does not exist hence will cause error.
+click.flatMap(e => load("movies.json"))
     .subscribe(
         renderMovies,
     e => console.log(`error: ${e}`),
