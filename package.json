@@ -1,0 +1,20 @@
+{
+  "name": "psrxjs5",
+  "version": "1.0.0",
+  "description": "Pluralsight - getting started with reactive programming using rxjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --watch --inline",
+    "postinstall": "typings install"
+  },
+  "dependencies": {
+    "rxjs": "^5.4.2"
+  },
+  "devDependencies": {
+    "ts-loader": "^2.3.0",
+    "typescript": "^2.4.1",
+    "typings": "^2.1.1",
+    "webpack": "^3.3.0",
+    "webpack-dev-server": "^2.5.1"
+  }
+}
