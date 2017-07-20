@@ -1,5 +1,6 @@
 import { Observable } from "rxjs";
 import { load, loadWithFetch } from "./loader"
+import {render} from "typings/dist/support/cli";
 
 let output = document.getElementById("output");
 let button = document.getElementById("button")
@@ -14,11 +15,20 @@ function renderMovies(movies) {
     });
 }
 
+let subscription =
+    load("movies.json")
+        .subscribe(renderMovies,
+            e => console.log(`error: ${e}`),
+            () => console.log("complete!"));
+
+console.log(subscription);
+subscription.unsubscribe();
+
 // Try to GET none existent file ...
-loadWithFetch("nowt.json")
-    .subscribe(renderMovies,
-        e => console.log(`error: ${e}`),
-        () => console.log("complete!"));
+// loadWithFetch("nowt.json")
+//     .subscribe(renderMovies,
+//         e => console.log(`error: ${e}`),
+//         () => console.log("complete!"));
 
 click.flatMap(e => loadWithFetch("movies.json"))
     .subscribe(
